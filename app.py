@@ -1,7 +1,7 @@
 import os
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from .models import setup_db, Lab_Inventory, db_drop_create_all, lab_inventory_schema, inventory_schema
+from models import setup_db, Lab_Inventory, db_drop_create_all, lab_inventory_schema, inventory_schema
 
 #Creates and configures the application
 def create_app(test_config=None):
