@@ -1,9 +1,9 @@
 import MainPage from "./components/pages/MainPage";
 
-const App = () => {
+const MainApp = () => {
   return (
     <MainPage message={"WELCOME"}/>
   );
 }
 
-export default App;
+export default MainApp;
