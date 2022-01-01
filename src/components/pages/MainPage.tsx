@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { useAddModal, useDeleteModal, useUpdateModal } from '../../hooks';
 
 import Button from '../atoms/Button';
-import Modal from '../atoms/Modal';
 import AddModal from '../organisms/AddItemModal';
 import LabInventoryTable from "../organisms/InventoryTable";
 

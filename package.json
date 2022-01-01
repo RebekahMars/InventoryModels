@@ -3,9 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.13.1",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^17.0.5",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "react": "^16.14.0",
     "react-dom": "^16.13.1",
-    "react-scripts": "^5.0.0"
+    "react-focus-lock": "^2.7.1",
+    "react-hook-form": "^7.22.5",
+    "react-scripts": "^5.0.0",
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
     "npm-watch": "^0.11.0",
