@@ -1,6 +1,94 @@
 import os
-from flask import Flask
+from flask import Flask, jsonify, request
+from flask_cors import CORS
+from .models import setup_db, Lab_Inventory, db_drop_create_all, lab_inventory_schema, inventory_schema
 
+#Creates and configures the application
+def create_app(test_config=None):
+    app = Flask(__name__, static_folder='build/', static_url_path='/')
+    setup_db(app)
+    CORS(app)
+
+    #uncomment first time running the app
+    db_drop_create_all()
+
+    #Main Page
+    @app.route('/')
+    def index():
+        return app.send_static_file('index.html')
+
+    #General Path
+    @app.route('/<path:path>')
+    def static_file(path):
+        return app.send_static_file(path)
+
+    #Get all items from inventory
+    @app.route('/get-inventory', methods = ['GET'])
+    def get_all_inventory():
+        all_inventory_items = Lab_Inventory.query.all()
+        results = lab_inventory_schema.dump(all_inventory_items)
+        return jsonify(results)
+
+    #Get a single item from inventory
+    @app.route('/<id>', methods = ['GET'])
+    def get_single_item():
+        item = Lab_Inventory.query.get(id)
+        return lab_inventory_schema.jsonify(item)
+
+    #Update a single item from inventory
+    @app.route('/update/<id>', methods = ['PUT'])
+    def update_item():
+        item = Lab_Inventory.query.get(id)
+
+        name = request.json['name']
+        lot_number = request.json['lot_number']
+        quantity = request.json['quantity']
+        order_date = request.json['order_date']
+        expiration_date = request.json['expiration_date']
+        min_amount = request.json['min_amount']
+        max_amount = request.json['max_amount']
+        description = request.json['description']
+
+        item.name = name
+        item.lot_number = lot_number
+        item.quantity = quantity
+        item.order_date = order_date
+        item.expiration_date = expiration_date
+        item.min_amount = min_amount
+        item.max_amount = max_amount
+        item.description = description
+
+        #db.session.commit()
+        return inventory_schema.jsonify(item)
+
+    #Add a single item from inventory
+    @app.route('/add', methods = ['POST'])
+    def add_inventory_item():
+        name = request.json['name']
+        lot_number = request.json['lot_number']
+        quantity = request.json['quantity']
+        order_date = request.json['order_date']
+        expiration_date = request.json['expiration_date']
+        min_amount = request.json['min_amount']
+        max_amount = request.json['max_amount']
+        description = request.json['description']
+
+        item = Lab_Inventory(name, lot_number, quantity, order_date, expiration_date, min_amount, max_amount, description)
+        #db.session.add(item)
+        #db.session.commit()
+        return inventory_schema.jsonify(item)
+
+    #Delete a single item from inventory
+    @app.route('/delete/<id>', methods = ['DELETE'])
+    def delete_item(id):
+        item = Lab_Inventory.query.get(id)
+        #db.session.delete(item)
+        #db.session.commit()
+        return inventory_schema.jsonify(item)
+
+    return app
+
+'''
 app = Flask(__name__, static_folder='build/', static_url_path='/')
 app.debug = 'DEBUG' in os.environ
 
@@ -13,3 +101,4 @@ def index():
 @app.route('/<path:path>')
 def static_file(path):
     return app.send_static_file(path)
+'''
