@@ -1,3 +1,4 @@
+import React from 'react';
 import {TableColumns} from '../Table';
 
 export interface TableRowProps<T, K extends keyof T> {

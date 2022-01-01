@@ -1,3 +1,4 @@
+import React from 'react';
 import {TableColumns} from '../Table';
 import styled from 'styled-components';
 
