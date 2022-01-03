@@ -4,11 +4,12 @@ interface ButtonProps{
 interface Inventory {
     id?: number;
     name: string;
+    lot: string;
     quantity: number;
-    orderDate: Date;
+    order: Date;
     expiration: Date;
-    minAmount: number;
-    maxAmount: number;
+    min: number;
+    max: number;
     description: string;
 }
 

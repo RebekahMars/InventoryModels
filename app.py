@@ -58,7 +58,7 @@ def create_app(test_config=None):
         item.max_amount = max_amount
         item.description = description
 
-        #db.session.commit()
+        Lab_Inventory.update(item);
         return inventory_schema.jsonify(item)
 
     #Add a single item from inventory
@@ -74,31 +74,14 @@ def create_app(test_config=None):
         description = request.json['description']
 
         item = Lab_Inventory(name, lot_number, quantity, order_date, expiration_date, min_amount, max_amount, description)
-        #db.session.add(item)
-        #db.session.commit()
+        Lab_Inventory.insert(item);
         return inventory_schema.jsonify(item)
 
     #Delete a single item from inventory
     @app.route('/delete/<id>', methods = ['DELETE'])
     def delete_item(id):
         item = Lab_Inventory.query.get(id)
-        #db.session.delete(item)
-        #db.session.commit()
+        Lab_Inventory.delete(item);
         return inventory_schema.jsonify(item)
 
     return app
-
-'''
-app = Flask(__name__, static_folder='build/', static_url_path='/')
-app.debug = 'DEBUG' in os.environ
-
-
-@app.route('/')
-def index():
-    return app.send_static_file('index.html')
-
-
-@app.route('/<path:path>')
-def static_file(path):
-    return app.send_static_file(path)
-'''

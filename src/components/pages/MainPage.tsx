@@ -41,8 +41,8 @@ const MainPage: FC<MainPageProps> = ({message}) => {
             <Button type="button" onClick={()=>deleteModalToggle}>Update Item</Button>
             <Button type="button" onClick={()=> updateModalToggle}>Delete Item</Button>
         </ButtonWrapper>
-          <LabInventoryTable/>   
-          <AddModal />
+          <LabInventoryTable/> 
+          <AddModal/>
         </div>
       )
   };

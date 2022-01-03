@@ -1,4 +1,4 @@
-const domainName = 'https://mars-inventory.herokuapp.com/';
+const domainName = 'https://mars-inventory.herokuapp.com';
 
 export const connectToDB = async (route: string, body?: RequestInit) => {
     try {
@@ -35,14 +35,11 @@ export const addSingleItem = async (body: Inventory): Promise<Inventory> => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                data: {
-                    type: 'item',
-                    attributes: body
-                }
-            })
+            body: JSON.stringify(body)
         })
         if(!response.ok){
+            console.log(body)
+            console.log(response.json())
             throw new Error("Error")
         }
           return response.json(); 

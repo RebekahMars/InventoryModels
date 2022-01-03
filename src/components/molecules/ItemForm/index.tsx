@@ -56,16 +56,18 @@ width: 100px;
 interface FormInputs {
     name: string;
     quantity: number;
-    orderDate: Date;
+    lot: string,
+    order: Date;
     expiration: Date;
-    minAmount: number;
-    maxAmount: number;
+    min: number;
+    max: number;
     description: string;
 };
 
 interface FormDefaultValues {
     id?: string;
     name: string;
+    lotNumber: string,
     quantity: number;
     orderDate: Date;
     expiration: Date;
@@ -88,10 +90,9 @@ const ItemForm: React.FC<FormProps> = ({
     titleText
 })=> {
     const {register, handleSubmit, formState: {errors}} = useForm<FormInputs>({defaultValues} || {});
-    const [name, setName] = useState("");
     const onSubmit: SubmitHandler<FormInputs> = (data) => {
-        //setName(data.name);
-        console.log(data); //why do I only get console data on the second form submission/click
+        console.log("errors", errors);
+        console.log("form data", data); //why do I only get console data on the second form submission/click
         addSingleItem({...data});
     };
     return (
@@ -109,6 +110,19 @@ const ItemForm: React.FC<FormProps> = ({
                          />
                 </InputWrapper>
                 <InputWrapper>
+                    <StyledLabel>Lot Number </StyledLabel>
+                        <StyledInput
+                            {...register('lot')}
+                            name='lotNumber'
+                            id='lotNumber'
+                            type='text'
+                            placeholder="Lot Number"
+/*                             {...errors.quantity && errors.quantity.type === 'required' && (
+                                <div>Please enter an item quantity</div>
+                            )} */
+                        />
+                </InputWrapper>
+                <InputWrapper>
                     <StyledLabel>Quantity </StyledLabel>
                         <StyledInput
                             {...register('quantity')}
@@ -124,9 +138,9 @@ const ItemForm: React.FC<FormProps> = ({
                 <InputWrapper>
                     <StyledLabel>Order Date </StyledLabel>
                         <StyledInput
-                            {...register('orderDate')}
-                            name='order-date'
-                            id='order-date'
+                            {...register('order')}
+                            name='orderDate'
+                            id='orderDate'
                             type='date'
                             placeholder="mm/dd/yyyy"
 /*                             {...errors.orderDate && errors.orderDate.type === 'required' && (
@@ -150,7 +164,7 @@ const ItemForm: React.FC<FormProps> = ({
                 <InputWrapper>             
                     <StyledLabel>Minimum On-Hand </StyledLabel>
                         <StyledInput
-                            {...register('minAmount')}
+                            {...register('min')}
                             name='min'
                             id='min'
                             type='number'
@@ -163,7 +177,7 @@ const ItemForm: React.FC<FormProps> = ({
                 <InputWrapper> 
                     <StyledLabel>Maximum On-Hand </StyledLabel>
                         <StyledInput 
-                           {...register('maxAmount')}
+                           {...register('max')}
                             name='max'
                             id='max'
                             type='number'
