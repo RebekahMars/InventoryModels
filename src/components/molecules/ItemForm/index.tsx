@@ -91,7 +91,7 @@ const ItemForm: React.FC<FormProps> = ({
 })=> {
     const {register, handleSubmit, formState: {errors}} = useForm<FormInputs>({defaultValues} || {});
     const onSubmit: SubmitHandler<FormInputs> = (data) => {
-        console.log("form data", data); //why do I only get console data on the second form submission/click
+        console.log("form data", data);
         addSingleItem({...data});
     };
     return (
