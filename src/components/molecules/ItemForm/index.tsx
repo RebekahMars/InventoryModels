@@ -55,8 +55,8 @@ width: 100px;
 `;
 interface FormInputs {
     name: string;
-    quantity: number;
     lot: string,
+    quantity: number;
     order: Date;
     expiration: Date;
     min: number;
@@ -67,12 +67,12 @@ interface FormInputs {
 interface FormDefaultValues {
     id?: string;
     name: string;
-    lotNumber: string,
+    lot: string,
     quantity: number;
-    orderDate: Date;
+    order: Date;
     expiration: Date;
-    minAmount: number;
-    maxAmount: number;
+    min: number;
+    max: number;
     description: string;
 };
 
@@ -91,7 +91,6 @@ const ItemForm: React.FC<FormProps> = ({
 })=> {
     const {register, handleSubmit, formState: {errors}} = useForm<FormInputs>({defaultValues} || {});
     const onSubmit: SubmitHandler<FormInputs> = (data) => {
-        console.log("errors", errors);
         console.log("form data", data); //why do I only get console data on the second form submission/click
         addSingleItem({...data});
     };
@@ -113,8 +112,8 @@ const ItemForm: React.FC<FormProps> = ({
                     <StyledLabel>Lot Number </StyledLabel>
                         <StyledInput
                             {...register('lot')}
-                            name='lotNumber'
-                            id='lotNumber'
+                            name='lot'
+                            id='lot'
                             type='text'
                             placeholder="Lot Number"
 /*                             {...errors.quantity && errors.quantity.type === 'required' && (
@@ -139,8 +138,8 @@ const ItemForm: React.FC<FormProps> = ({
                     <StyledLabel>Order Date </StyledLabel>
                         <StyledInput
                             {...register('order')}
-                            name='orderDate'
-                            id='orderDate'
+                            name='order'
+                            id='order'
                             type='date'
                             placeholder="mm/dd/yyyy"
 /*                             {...errors.orderDate && errors.orderDate.type === 'required' && (
