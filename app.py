@@ -10,7 +10,7 @@ def create_app(test_config=None):
     CORS(app)
 
     #uncomment first time running the app
-    db_drop_create_all()
+    #db_drop_create_all()
 
     #Main Page
     @app.route('/')
