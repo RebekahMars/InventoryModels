@@ -7,17 +7,17 @@ export interface TableHeaderProps<T, K extends keyof T> {
 }
 
 const StyledTableHeader = styled.th`
-    width: 6rem;
-    border: none;
+    width: 150px;
+    border-bottom-width: 2px;
 `;
 
 const StyledTableRow = styled.tr`
-    border-collapse: collapse;
-    border-right: 1px solid black;
+    text-align: left;
 `;
 
 const StyledTableHead = styled.thead`
-    border-bottom: 1px solid black;
+    border-bottom-with: 2px;
+
 `;
 
 const TableHeader = <T, K extends keyof T>({tableColumns}: TableHeaderProps<T, K>): JSX.Element => {

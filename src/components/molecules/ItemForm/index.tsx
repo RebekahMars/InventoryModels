@@ -55,24 +55,24 @@ width: 100px;
 `;
 interface FormInputs {
     name: string;
-    lot: string,
+    lot_number: string,
     quantity: number;
-    order: Date;
-    expiration: Date;
-    min: number;
-    max: number;
+    order_date: Date;
+    expiration_date: Date;
+    min_amount: number;
+    max_amount: number;
     description: string;
 };
 
 interface FormDefaultValues {
     id?: string;
     name: string;
-    lot: string,
+    lot_number: string,
     quantity: number;
-    order: Date;
-    expiration: Date;
-    min: number;
-    max: number;
+    order_date: Date;
+    expiration_date: Date;
+    min_amount: number;
+    max_amount: number;
     description: string;
 };
 
@@ -111,7 +111,7 @@ const ItemForm: React.FC<FormProps> = ({
                 <InputWrapper>
                     <StyledLabel>Lot Number </StyledLabel>
                         <StyledInput
-                            {...register('lot')}
+                            {...register('lot_number')}
                             name='lot'
                             id='lot'
                             type='text'
@@ -137,7 +137,7 @@ const ItemForm: React.FC<FormProps> = ({
                 <InputWrapper>
                     <StyledLabel>Order Date </StyledLabel>
                         <StyledInput
-                            {...register('order')}
+                            {...register('order_date')}
                             name='order'
                             id='order'
                             type='date'
@@ -150,7 +150,7 @@ const ItemForm: React.FC<FormProps> = ({
                 <InputWrapper> 
                     <StyledLabel>Expiration Date </StyledLabel>
                         <StyledInput
-                            {...register ('expiration')}
+                            {...register ('expiration_date')}
                             name='expiration'
                             id='expiration'
                             type='date'
@@ -163,7 +163,7 @@ const ItemForm: React.FC<FormProps> = ({
                 <InputWrapper>             
                     <StyledLabel>Minimum On-Hand </StyledLabel>
                         <StyledInput
-                            {...register('min')}
+                            {...register('min_amount')}
                             name='min'
                             id='min'
                             type='number'
@@ -176,7 +176,7 @@ const ItemForm: React.FC<FormProps> = ({
                 <InputWrapper> 
                     <StyledLabel>Maximum On-Hand </StyledLabel>
                         <StyledInput 
-                           {...register('max')}
+                           {...register('max_amount')}
                             name='max'
                             id='max'
                             type='number'

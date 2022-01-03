@@ -17,15 +17,11 @@ const StyledLoader = styled(Loader)`
 
 const columns: TableColumns<Inventory, keyof Inventory>[] = [
     {
-        key: 'id',
-        header: "ID"
-    },
-    {
         key: "name",
         header: "Name"
     },
     {
-        key: "lot",
+        key: "lot_number",
         header: "Lot Number"
     },
     {
@@ -33,19 +29,19 @@ const columns: TableColumns<Inventory, keyof Inventory>[] = [
         header: "Quantity"
     },
     {
-        key: "order",
+        key: "order_date",
         header: "Order Date"
     },
     {
-        key: "expiration",
+        key: "expiration_date",
         header: "Expiration"
     },
     {
-        key: "min",
+        key: "min_amount",
         header: "Min"
     },
     {
-        key: "max",
+        key: "max_amount",
         header: "Max"
     },
     {
@@ -68,7 +64,7 @@ const LabInventoryTable: React.FC = () => {
     
     return (
         isLoading ? 
-        <StyledLoader type="Circles" color="black"/>
+        <StyledLoader type="Circles" color="lightblue"/>
     : <Table tableColumns={columns} tableData={inventory}/>) 
 };
 

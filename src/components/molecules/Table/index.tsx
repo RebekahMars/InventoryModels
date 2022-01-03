@@ -13,14 +13,20 @@ export interface TableProps<T, K extends keyof T> {
 }
 
 const StyledTable = styled.table`
-    align-items: center;
+    display: flex:
+    flex-direction: column;
+    text-align: inherit;
+    padding-botom: 10px;
+    border: 1px solid lightblue;
+`;
+
+/*    align-items: center;
     borderCollapse: collapse;
     display: flex;
     justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
     text-align: center;
-    padding: 10px;
-`;
+    padding: 10px; */
 
 const Table = <T, K extends keyof T>({ tableColumns, tableData}: TableProps<T, K>): JSX.Element => {
     return (

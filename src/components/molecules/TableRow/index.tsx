@@ -1,6 +1,25 @@
 import React from 'react';
+import styled from 'styled-components';
 import {TableColumns} from '../Table';
 
+const StyledTableBody = styled.tbody`
+    background-color: white;
+    border-collapse: collapse;
+`;
+
+const StyledTableData = styled.td`
+    border-collapse: collapse;
+    background-color: white;
+`;
+
+const StyledTableRow = styled.tr`
+    border-collapse: collapse;
+    &:hover {
+        cursor: pointer;
+        background-color: blue;
+    }
+    
+`;
 export interface TableRowProps<T, K extends keyof T> {
     rowData: Array<T>;
     rowColumns: Array<TableColumns<T, K>>;
@@ -9,23 +28,23 @@ export interface TableRowProps<T, K extends keyof T> {
 const TableRows = <T, K extends keyof T>({rowData, rowColumns}: TableRowProps<T, K>): JSX.Element => {
     const tableRows = rowData.map((row, row_index) => {
         return (
-            <tr key={`cell-${row_index}`}>
+            <StyledTableRow key={`cell-${row_index}`}>
                 {rowColumns.map((col, col_index) => {
                     return (
-                        <td key={`cell-${col_index}`}>
+                        <StyledTableData key={`cell-${col_index}`}>
                             {row[col.key]}
-                        </td>
+                        </StyledTableData>
                     );
                 }
                 )}
-            </tr>
+            </StyledTableRow>
         ); 
     });
 
     return (
-        <tbody>
+        <StyledTableBody>
             {tableRows}
-        </tbody>
+        </StyledTableBody>
     );
 };
 
