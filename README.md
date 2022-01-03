@@ -1,9 +1,9 @@
-# react-flask-heroku
-Simple bootstrapping code to get you started with a React frontend and Flask backend ready to deploy to Heroku.
+# Inventory Management Modeling with Machine Learning
+React Typescript frontend, Python/Flask backend, Postgres database, hosted on Heroku
 
 ## Dependencies
 
-python3, npm, Heroku CLI
+python3, npm, Heroku CLI, Flask
 
 ## Setup
 
@@ -17,16 +17,8 @@ python3, npm, Heroku CLI
 
 The application will be running at http://localhost:5000.
 
-## Deploying
-
-First, create your app on Heroku. Then:
-
-1. `heroku git:remote -a {YOUR_APP_NAME}`
-2. `heroku buildpacks:set heroku/python`
-3. `heroku buildpacks:add --index 1 heroku/nodejs`
-4. `git push heroku master`
-
 ## Project Structure
 
 * Flask server is at `app.py`
+* Postgres tables is at `models.py`
 * React components in `src/`
