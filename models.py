@@ -34,8 +34,8 @@ def db_drop_create_all():
 class Lab_Inventory(db.Model):
     __tablename__ = 'inventory'
     id = Column(Integer, primary_key=True)
-    name = Column(String(100), unique=True)
-    lot_number = Column(String(50))
+    name = Column(String(100))
+    lot_number = Column(String(50), unique=True)
     quantity = Column(Integer)
     order_date = Column(Date)
     expiration_date = Column(Date)
