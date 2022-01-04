@@ -95,7 +95,7 @@ const ItemForm: React.FC<FormProps> = ({
         addSingleItem({...data});
     };
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form action="/add" method="POST" onSubmit={handleSubmit(onSubmit)}>
             <FormWrapper>
                 <InputWrapper>
                     <StyledLabel>Item Name </StyledLabel>

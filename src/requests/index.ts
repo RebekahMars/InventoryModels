@@ -38,8 +38,6 @@ export const addSingleItem = async (body: Inventory): Promise<Inventory> => {
             body: JSON.stringify(body)
         })
         if(!response.ok){
-            console.log(body)
-            console.log(response.json())
             throw new Error("Error")
         }
           return response.json(); 
