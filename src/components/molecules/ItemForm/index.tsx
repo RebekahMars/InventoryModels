@@ -112,7 +112,7 @@ const ItemForm: React.FC<FormProps> = ({
                     <StyledLabel>Lot Number </StyledLabel>
                         <StyledInput
                             {...register('lot_number')}
-                            name='lot'
+                            name='lot_number'
                             id='lot'
                             type='text'
                             placeholder="Lot Number"
@@ -138,7 +138,7 @@ const ItemForm: React.FC<FormProps> = ({
                     <StyledLabel>Order Date </StyledLabel>
                         <StyledInput
                             {...register('order_date')}
-                            name='order'
+                            name='order_date'
                             id='order'
                             type='date'
                             placeholder="mm/dd/yyyy"
@@ -151,7 +151,7 @@ const ItemForm: React.FC<FormProps> = ({
                     <StyledLabel>Expiration Date </StyledLabel>
                         <StyledInput
                             {...register ('expiration_date')}
-                            name='expiration'
+                            name='expiration_date'
                             id='expiration'
                             type='date'
                             placeholder="mm/dd/yyyy"
@@ -164,7 +164,7 @@ const ItemForm: React.FC<FormProps> = ({
                     <StyledLabel>Minimum On-Hand </StyledLabel>
                         <StyledInput
                             {...register('min_amount')}
-                            name='min'
+                            name='min_amount'
                             id='min'
                             type='number'
                             placeholder="Item Minimum"
@@ -177,7 +177,7 @@ const ItemForm: React.FC<FormProps> = ({
                     <StyledLabel>Maximum On-Hand </StyledLabel>
                         <StyledInput 
                            {...register('max_amount')}
-                            name='max'
+                            name='max_amount'
                             id='max'
                             type='number'
                             placeholder="Item Maximum"

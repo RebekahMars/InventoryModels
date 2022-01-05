@@ -40,7 +40,8 @@ export const addSingleItem = async (body: Inventory): Promise<Inventory> => {
         if(!response.ok){
             throw new Error("Error")
         }
-          return response.json(); 
+        return response.json();
+          
            
     } catch (error) {
         console.log(error);
