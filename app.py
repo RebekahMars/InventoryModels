@@ -1,3 +1,4 @@
+import pickle
 import os
 from flask import Flask, jsonify, request
 from flask_cors import CORS
@@ -87,5 +88,23 @@ def create_app(test_config=None):
         item = Lab_Inventory.query.get(id)
         Lab_Inventory.delete(item);
         return inventory_schema.jsonify(item)
+
+    #Makes request to ML Model trained     
+    @app.route('/predictions', methods=['GET'])
+    def make_prediction():
+        with open('forecast_model.pckl', 'rb') as fin:
+            prediction_model = pickle.load(fin)
+        horizon = int(request.json('horizon'))
+        future = prediction_model.make_future_dataframe(periods = 5)
+        new_prediction = prediction_model.predict(future)
+        data = new_prediction[['ds', 'yhat', 'yhat_lower', 'yhat_upper'][-5:]]
+        prediction_plot = prediction_model.plot(new_prediction)
+        prediction_plot_components = prediction_model.plot_components(new_prediction)
+
+        data_results = data.to_json(orient='records', data_format='iso')
+        prediction_plot_results = prediction_plot.to_json(orient='records', data_format='iso')
+        prediction_plot_components_results = prediction_plot_components.to_json(orient='records', data_format='iso')
+
+        return data_results, prediction_plot_results, prediction_plot_components_results
 
     return app

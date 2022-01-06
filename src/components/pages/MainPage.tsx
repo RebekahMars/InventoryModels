@@ -1,6 +1,7 @@
-import React, { useState, FC } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import styled from 'styled-components';
 import { useAddModal, useDeleteModal, useUpdateModal } from '../../hooks';
+import { fetchMLModelData } from '../../requests';
 
 import Button from '../atoms/Button';
 import AddModal from '../organisms/AddItemModal';
@@ -31,6 +32,16 @@ const MainPage: FC<MainPageProps> = ({message}) => {
       const {deleteModalOpen, deleteModalToggle} = useDeleteModal();
       const {updateModalOpen, updateModalToggle} = useUpdateModal();
 
+      const [model, setModel] = useState();
+
+      useEffect(() => {
+        const data = fetchMLModelData()
+        data.then(results => {
+          setModel(results);
+          console.log(results);
+      })
+      }, [])
+
 
       
 
@@ -41,7 +52,8 @@ const MainPage: FC<MainPageProps> = ({message}) => {
             <Button type="button" onClick={()=>deleteModalToggle}>Update Item</Button>
             <Button type="button" onClick={()=> updateModalToggle}>Delete Item</Button>
         </ButtonWrapper>
-          <LabInventoryTable/>  
+          <LabInventoryTable/>
+          <div>{model}</div>  
         </div>
       )
   };

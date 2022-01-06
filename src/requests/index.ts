@@ -10,6 +10,35 @@ export const connectToDB = async (route: string, body?: RequestInit) => {
     }
 };
 
+export const connectToMLModel = async (route: string, body?: RequestInit) => {
+    try {
+        return fetch(`localhost:3000${route}`, {
+            ...body
+        })
+    } catch (error) {
+        throw new Error("Unable to connect to IML Model");
+    }
+};
+
+export const fetchMLModelData = async () => {
+    try{
+        const response = await connectToMLModel(`/predictions`, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'applications/json'
+            }
+        })
+        if(!response.ok){
+            throw new Error("Error")
+        }
+        return response.json();
+
+    } catch (error) {
+        console.log(error);
+        throw new Error("Unable to get MLModelData");
+    }
+};
+
 export const fetchInventoryData = async (): Promise<Inventory[]> => {
     try {
         const response = await connectToDB(`/get-inventory`, {
