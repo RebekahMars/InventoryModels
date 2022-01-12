@@ -35,7 +35,7 @@ const MainPage: FC<MainPageProps> = ({message}) => {
       const [model, setModel] = useState();
 
       useEffect(() => {
-        const data = fetchInventoryData()
+        const data = fetchPrediction()
         data.then(results => {
           console.log(results);
       })
@@ -46,6 +46,7 @@ const MainPage: FC<MainPageProps> = ({message}) => {
 
       return (
         <div>
+          <LabInventoryTable/>
           <div>{model}</div>  
         </div>
       )

@@ -105,7 +105,6 @@ def create_app(test_config=None):
         new_prediction = prediction_model.predict(periods)
         lists = new_prediction.tolist()
         results = json.dumps(lists)
-        results.headers.add('Access-Control-Allow-Origin', '*')
         return jsonify(results)
 
     return app
