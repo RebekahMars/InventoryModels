@@ -1,7 +1,7 @@
 import React, { useState, useEffect, FC } from 'react';
 import styled from 'styled-components';
 import { useAddModal, useDeleteModal, useUpdateModal } from '../../hooks';
-import { fetchMLModelData } from '../../requests';
+import { fetchPrediction } from '../../requests';
 
 import Button from '../atoms/Button';
 import AddModal from '../organisms/AddItemModal';
@@ -35,7 +35,7 @@ const MainPage: FC<MainPageProps> = ({message}) => {
       const [model, setModel] = useState();
 
       useEffect(() => {
-        const data = fetchMLModelData()
+        const data = fetchPrediction()
         data.then(results => {
           setModel(results);
           console.log(results);
@@ -47,12 +47,6 @@ const MainPage: FC<MainPageProps> = ({message}) => {
 
       return (
         <div>
-        <ButtonWrapper>
-            <Button type="button" onClick={addModalToggle}>Add Item</Button>
-            <Button type="button" onClick={()=>deleteModalToggle}>Update Item</Button>
-            <Button type="button" onClick={()=> updateModalToggle}>Delete Item</Button>
-        </ButtonWrapper>
-          <LabInventoryTable/>
           <div>{model}</div>  
         </div>
       )

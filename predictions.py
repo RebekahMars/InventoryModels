@@ -11,7 +11,7 @@ import pickle
 import pandas as pd; #dataframe library
 from matplotlib import pyplot as plt; #library for plotting
 import numpy as np; #library for object support
-from fbprophet import Prophet; #open-source Prophet library
+from prophet import Prophet; #open-source Prophet library
 
 #%%
 # ##Read and Process Data
@@ -31,7 +31,7 @@ df.columns = ['ds', 'y']
 df['ds']= pd.to_datetime(df['ds'])
 #%%
 # ##Train Model
-model = Prophet(daily_seasonality=True)
+model = Prophet(daily_seasonality=True, weekly_seasonality=True, interval_width=0.95)
 model.fit(df)
 
 #%%
@@ -47,7 +47,5 @@ plot2 = model.plot_components(forecast) #see plot of forecast broken down
 
 # %%
 # ## Saves the Model
-with open('forecast_model.pckl', 'wb') as fout:
-    pickle.dump(model, fout)
-
+pickle.dump(model, open('forecast_model.pckl', 'wb'))
 # %%

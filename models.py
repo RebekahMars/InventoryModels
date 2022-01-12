@@ -11,7 +11,7 @@ Binds Flask app and SQLAlchemy service
 
 def setup_db(app):
     database_name = 'inventory_app'
-    default_database_path = "postgresql://{}:{}@{}/{}".format('postgresql' , 'password', 'localhost:5432', database_name)
+    default_database_path = "postgres://{}:{}@{}/{}".format('postgres' , 'password', 'localhost:5432', database_name)
     database_path = os.getenv('DATABASE_URL', default_database_path)
     heroku_database_path = database_path.replace("://", "ql://", 1) #Heroku still uses postgres and not postgresql, needs to be updated manually
     app.config["SQLALCHEMY_DATABASE_URI"] = heroku_database_path

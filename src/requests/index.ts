@@ -6,24 +6,15 @@ export const connectToDB = async (route: string, body?: RequestInit) => {
             ...body
         })
     } catch (error) {
-        throw new Error("Unable to connect to Inventory PostgreSQL Database");
+        throw new Error("Unable to connect to domain name");
     }
 };
 
-export const connectToMLModel = async (route: string, body?: RequestInit) => {
-    try {
-        return fetch(`localhost:3000${route}`, {
-            ...body
-        })
-    } catch (error) {
-        throw new Error("Unable to connect to IML Model");
-    }
-};
 
-export const fetchMLModelData = async () => {
+export const fetchPrediction = async () => {
     try{
-        const response = await connectToMLModel(`/predictions`, {
-            method: "GET",
+        const response = await connectToDB(`/predictions`, {
+            method: "POST",
             headers: {
                 'Content-Type': 'applications/json'
             }
