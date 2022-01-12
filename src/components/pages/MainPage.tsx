@@ -1,7 +1,7 @@
 import React, { useState, useEffect, FC } from 'react';
 import styled from 'styled-components';
 import { useAddModal, useDeleteModal, useUpdateModal } from '../../hooks';
-import { fetchPrediction } from '../../requests';
+import { fetchInventoryData, fetchPrediction } from '../../requests';
 
 import Button from '../atoms/Button';
 import AddModal from '../organisms/AddItemModal';
@@ -35,9 +35,8 @@ const MainPage: FC<MainPageProps> = ({message}) => {
       const [model, setModel] = useState();
 
       useEffect(() => {
-        const data = fetchPrediction()
+        const data = fetchInventoryData()
         data.then(results => {
-          setModel(results);
           console.log(results);
       })
       }, [])

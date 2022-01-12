@@ -4,14 +4,12 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 from models import setup_db, Lab_Inventory, db_drop_create_all, lab_inventory_schema, inventory_schema
 
-#Load the pipeline object (model)
-#pipeline = load("text_classification.joblib") #This is the name of your saved ML model
-
 #Creates and configures the application
 def create_app(test_config=None):
     app = Flask(__name__, static_folder='build/', static_url_path='/')
     setup_db(app)
     CORS(app)
+    app.config['CORS_HEADERS'] = 'Content-Type'
 
     #uncomment first time running the app
     #db_drop_create_all()
@@ -107,6 +105,7 @@ def create_app(test_config=None):
         new_prediction = prediction_model.predict(periods)
         lists = new_prediction.tolist()
         results = json.dumps(lists)
+        results.headers.add('Access-Control-Allow-Origin', '*')
         return jsonify(results)
 
     return app
