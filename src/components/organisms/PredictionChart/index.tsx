@@ -1,15 +1,10 @@
 import React, { useState, useEffect, FC } from 'react';
 import styled from 'styled-components';
-import { useAddModal, useDeleteModal, useUpdateModal } from '../../hooks';
-import { fetchInventoryData, fetchPrediction } from '../../requests';
+import { fetchPrediction } from '../../../requests';
 
-import Button from '../atoms/Button';
-import AddModal from '../organisms/AddItemModal';
-import LabInventoryTable from "../organisms/InventoryTable";
 
 import { Chart as ChartJS, LineController, LineElement, PointElement, LinearScale, Title,CategoryScale, ChartData } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { Chart } from 'react-chartjs-2';
 
 ChartJS.register(LineController, LineElement, PointElement, LinearScale, Title, CategoryScale);
 
@@ -26,10 +21,7 @@ const GraphWrapper = styled.div`
   height: 500px;
 `;
 
-const MainPage: FC<MainPageProps> = ({message}) => {
-  const {addModalOpen, addModalToggle} = useAddModal();
-  const {deleteModalOpen, deleteModalToggle} = useDeleteModal();
-  const {updateModalOpen, updateModalToggle} = useUpdateModal();
+const Chart: FC<MainPageProps> = () => {
 
   const [chartIndex, setChartIndex] = useState<number[]>([]);
   const [chartValues, setChartValues] = useState<string[]>([]);
@@ -85,5 +77,3 @@ const MainPage: FC<MainPageProps> = ({message}) => {
     </GraphWrapper>
   )
 };
-
-export default MainPage;
