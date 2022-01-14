@@ -1,4 +1,5 @@
-const domainName = 'https://mars-inventory.herokuapp.com';
+//const domainName = 'https://mars-inventory.herokuapp.com';
+const domainName = 'http://127.0.0.1:5000/';
 
 export const connectToDB = async (route: string, body?: RequestInit) => {
     try {
@@ -11,13 +12,14 @@ export const connectToDB = async (route: string, body?: RequestInit) => {
 };
 
 
-export const fetchPrediction = async () => {
+export const fetchPrediction = async (body: number) => {
     try{
         const response = await connectToDB(`/predictions`, {
             method: "POST",
             headers: {
                 'Content-Type': 'applications/json'
-            }
+            },
+            body: JSON.stringify(body)
         })
         if(!response.ok){
             throw new Error("Error")

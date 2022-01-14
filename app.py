@@ -97,11 +97,11 @@ def create_app(test_config=None):
     #     return inventory_schema.jsonify(item)
 
     #Makes request to ML Model trained     
-    @app.route('/predictions', methods=['GET', 'POST'])
+    @app.route('/predictions', methods=['POST'])
     @cross_origin()
     def make_prediction():
         prediction_model = pickle.load(open('saved_model.pkl', 'rb'))
-        periods=100
+        periods=request.get_json('data')
         new_prediction = prediction_model.predict(periods)
         lists = new_prediction.tolist()
         results = json.dumps(lists)

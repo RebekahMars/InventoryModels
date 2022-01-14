@@ -11,11 +11,15 @@ interface Inventory {
     min_amount: number;
     max_amount: number;
     description: string;
-}
+};
 
 interface InventoryItem extends Inventory {
     lotNumber?: string;
-}
+};
 interface MainPageProps {
-    message: string;
-}
+    message?: string;
+};
+
+interface PredictionProps {
+    periods: number;
+};

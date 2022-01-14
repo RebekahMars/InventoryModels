@@ -2,26 +2,18 @@ import React, { useState, useEffect, FC } from 'react';
 import styled from 'styled-components';
 import { fetchPrediction } from '../../../requests';
 
-
 import { Chart as ChartJS, LineController, LineElement, PointElement, LinearScale, Title,CategoryScale, ChartData } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
 ChartJS.register(LineController, LineElement, PointElement, LinearScale, Title, CategoryScale);
 
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-`;
-
 const GraphWrapper = styled.div`
   display: flex;
-  width: 80%;
+  width: 500px;
   height: 500px;
 `;
 
-const Chart: FC<MainPageProps> = () => {
+const PredictionGraph: FC<PredictionProps> = ({periods}) => {
 
   const [chartIndex, setChartIndex] = useState<number[]>([]);
   const [chartValues, setChartValues] = useState<string[]>([]);
@@ -29,7 +21,7 @@ const Chart: FC<MainPageProps> = () => {
   const createChart = () => {
     let x: number[] = [];
     let y: string[] = [];
-    const data = fetchPrediction();
+    const data = fetchPrediction(periods);
     data.then(results => {
       results = results.replace(/[\[\]']+/g,'')
       let result = results.split(',')
@@ -77,3 +69,5 @@ const Chart: FC<MainPageProps> = () => {
     </GraphWrapper>
   )
 };
+
+export default PredictionGraph;
