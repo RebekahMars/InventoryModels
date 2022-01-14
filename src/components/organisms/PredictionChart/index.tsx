@@ -11,13 +11,18 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+`;
+
+const GraphWrapper = styled.div`
   width: 800px;
   height: 800px;
+  align-items: center;
 `;
 
 const PredictionGraph: FC<PredictionProps> = ({periods}) => {
   const [chartIndex, setChartIndex] = useState<number[]>([]);
   const [chartValues, setChartValues] = useState<string[]>([]);
+  const [growthRate, setGrowthRate] = useState<string>();
 
   const createChart = () => {
     let x: number[] = [];
@@ -37,6 +42,10 @@ const PredictionGraph: FC<PredictionProps> = ({periods}) => {
 
   const calculateGrowthRate = () => {
     let chartDataPoints = chartValues.map(Number);
+    let firstDataPoint = chartDataPoints[0];
+    let lastDataPoint = chartDataPoints[(chartDataPoints.length-1)];
+    let growthAsPercentage = (((lastDataPoint - firstDataPoint) / firstDataPoint) * 100).toFixed(2);
+    setGrowthRate(growthAsPercentage);
   }
 
   const chartData = {
@@ -80,13 +89,15 @@ const PredictionGraph: FC<PredictionProps> = ({periods}) => {
   useEffect(() => {
     createChart();
     calculateGrowthRate();
-  }, [chartData]);
+  }, [chartValues]);
 
   return (
     <>
     <Wrapper>
-      <Line data={chartData} options={options}/>
-      <div>Hello</div>
+      <GraphWrapper>
+        <Line data={chartData} options={options}/>
+      </GraphWrapper>
+      <div>Over the course of {chartValues.length} days, sales are pedicted to change by {growthRate}% </div>
     </Wrapper>
     </>
   )
