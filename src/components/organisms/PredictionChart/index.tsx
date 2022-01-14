@@ -7,14 +7,15 @@ import { Line } from 'react-chartjs-2';
 
 ChartJS.register(LineController, LineElement, PointElement, LinearScale, Title, CategoryScale);
 
-const GraphWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
-  width: 500px;
-  height: 500px;
+  flex-direction: row;
+  justify-content: center;
+  width: 800px;
+  height: 800px;
 `;
 
 const PredictionGraph: FC<PredictionProps> = ({periods}) => {
-
   const [chartIndex, setChartIndex] = useState<number[]>([]);
   const [chartValues, setChartValues] = useState<string[]>([]);
 
@@ -34,11 +35,15 @@ const PredictionGraph: FC<PredictionProps> = ({periods}) => {
     });
   };
 
+  const calculateGrowthRate = () => {
+    let chartDataPoints = chartValues.map(Number);
+  }
+
   const chartData = {
     labels: chartIndex,
     datasets: [
       {
-        label: 'Dataset 1',
+        label: 'Prediction Dataset',
         data: chartValues,
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
@@ -55,18 +60,35 @@ const PredictionGraph: FC<PredictionProps> = ({periods}) => {
         display: true,
         text: 'Predicted Forecast for Sales',
       },
+      scales: {
+        x: {
+          display: true,
+          scaleLabel: {
+            labelString: 'Days'
+          }
+        },
+        y: {
+          display: true,
+          scaleLabel: {
+            labelString: 'Forecasted Sales'
+          }
+        }
+      }
     },
   };
 
   useEffect(() => {
-    createChart()
-      }, []);
-      console.log(chartData);
+    createChart();
+    calculateGrowthRate();
+  }, [chartData]);
 
   return (
-    <GraphWrapper>
+    <>
+    <Wrapper>
       <Line data={chartData} options={options}/>
-    </GraphWrapper>
+      <div>Hello</div>
+    </Wrapper>
+    </>
   )
 };
 
