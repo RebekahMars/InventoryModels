@@ -13,6 +13,18 @@ interface Inventory {
     description: string;
 };
 
+interface Sales {
+    id?: number;
+    order_date: Date;
+    aerobic: number;
+    anaerobic: number;
+    fungal: number;
+    cl: number;
+    mycobacterium: number;
+    mycoplasma: number;
+
+}
+
 interface InventoryItem extends Inventory {
     lotNumber?: string;
 };

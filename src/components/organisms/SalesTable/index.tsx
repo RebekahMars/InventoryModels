@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import Loader from "react-loader-spinner";
-import { fetchInventoryData } from "../../../requests";
+import { fetchSalesData } from "../../../requests";
 import Table from "../../molecules/Table";
 import { TableColumns} from "../../molecules/Table";
 
@@ -15,47 +15,43 @@ const StyledLoader = styled(Loader)`
     timeout: 5000ms; //5 secs
 `;
 
-const columns: TableColumns<Inventory, keyof Inventory>[] = [
-    {
-        key: "name",
-        header: "Name"
-    },
-    {
-        key: "lot_number",
-        header: "Lot Number"
-    },
-    {
-        key: "quantity",
-        header: "Quantity"
-    },
+const columns: TableColumns<Sales, keyof Sales>[] = [
     {
         key: "order_date",
-        header: "Order Date"
+        header: "Order Data"
     },
     {
-        key: "expiration_date",
-        header: "Expiration"
+        key: "aerobic",
+        header: "Aerobic Culture Orders"
     },
     {
-        key: "min_amount",
-        header: "Min"
+        key: "anaerobic",
+        header: "Anaerobic Culture Orders"
     },
     {
-        key: "max_amount",
-        header: "Max"
+        key: "fungal",
+        header: "Fungal Culture Orders"
     },
     {
-        key: "description",
-        header: "Description"
+        key: "cl",
+        header: "CL Culture Orders"
+    },
+    {
+        key: "mycobacterium",
+        header: "Mycobacterium Culture Orders"
+    },
+    {
+        key: "mycoplasma",
+        header: "Mycoplasma Culture Orders"
     },
 ];
 
-const LabInventoryTable: React.FC = () => {
+const LabSalesTable: React.FC = () => {
     const [isLoading, setIsLoading] = useState(true);
-    const [inventory, setInventory] = useState<Inventory[]>([]);
+    const [inventory, setInventory] = useState<Sales[]>([]);
     
     useEffect(() => {
-        const data = fetchInventoryData();
+        const data = fetchSalesData();
         data.then(results => {
             setInventory(results);
             setIsLoading(false);
@@ -68,4 +64,4 @@ const LabInventoryTable: React.FC = () => {
     : <Table tableColumns={columns} tableData={inventory}/>) 
 };
 
-export default LabInventoryTable;
+export default LabSalesTable;

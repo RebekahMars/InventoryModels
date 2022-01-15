@@ -2,7 +2,7 @@ import pickle
 import json
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
-from models import setup_db, Lab_Inventory, db_drop_create_all, lab_inventory_schema, inventory_schema
+from models import setup_db, Lab_Inventory, Inventory_Sales_Orders, sales_schema, inventory_sales_schema, db_drop_create_all, lab_inventory_schema, inventory_schema
 
 #Creates and configures the application
 def create_app(test_config=None):
@@ -39,6 +39,14 @@ def create_app(test_config=None):
         all_inventory_items = Lab_Inventory.query.all()
         results = lab_inventory_schema.dump(all_inventory_items)
         return jsonify(results)
+    
+    @app.route('/get-lab-sales', methods=['GET'])
+    @cross_origin()
+    def get_all_sales():
+        all_lab_sales = Inventory_Sales_Orders.query.all()
+        results = inventory_sales_schema.dump(all_lab_sales)
+        return jsonify(results)
+
 
     #Get a single item from inventory
     # @app.route('/<id>', methods = ['GET'])

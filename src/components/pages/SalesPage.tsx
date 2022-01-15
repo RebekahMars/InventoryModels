@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import LabSalesTable from '../organisms/SalesTable';
 
 const Header = styled.h1`
   display: flex;
@@ -13,6 +14,7 @@ const SalesPage = () => {
     return (
       <>
       <Header>Lab Sales</Header>
+      <LabSalesTable/>
       </>
     )
   };

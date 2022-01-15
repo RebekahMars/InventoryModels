@@ -1,5 +1,5 @@
 const domainName = 'https://mars-inventory.herokuapp.com';
-//const domainName = 'http://127.0.0.1:5000/';
+//const domainName = 'http://127.0.0.1:5000/'; #local setup only
 
 export const connectToDB = async (route: string, body?: RequestInit) => {
     try {
@@ -47,6 +47,24 @@ export const fetchInventoryData = async (): Promise<Inventory[]> => {
 
     } catch (error) {
         throw new Error("Unable to fetch Inventory Data from Database");
+    }
+};
+
+export const fetchSalesData = async (): Promise<Sales[]> => {
+    try {
+        const response = await connectToDB(`/get-lab-sales`, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'applications/json'
+            }
+        })
+        if(!response.ok){
+            throw new Error("Error")
+        }
+        return response.json();
+
+    } catch (error) {
+        throw new Error("Unable to fetch Sales Data from Database");
     }
 };
 
