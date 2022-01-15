@@ -21,27 +21,27 @@ const columns: TableColumns<Sales, keyof Sales>[] = [
         header: "Order Data"
     },
     {
-        key: "aerobic",
+        key: "aerobic_orders",
         header: "Aerobic Culture Orders"
     },
     {
-        key: "anaerobic",
+        key: "anaerobic_orders",
         header: "Anaerobic Culture Orders"
     },
     {
-        key: "fungal",
+        key: "fungal_orders",
         header: "Fungal Culture Orders"
     },
     {
-        key: "cl",
+        key: "cl_orders",
         header: "CL Culture Orders"
     },
     {
-        key: "mycobacterium",
+        key: "mycobacterium_orders",
         header: "Mycobacterium Culture Orders"
     },
     {
-        key: "mycoplasma",
+        key: "mycoplasma_orders",
         header: "Mycoplasma Culture Orders"
     },
 ];

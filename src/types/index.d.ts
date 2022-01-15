@@ -16,12 +16,12 @@ interface Inventory {
 interface Sales {
     id?: number;
     order_date: Date;
-    aerobic: number;
-    anaerobic: number;
-    fungal: number;
-    cl: number;
-    mycobacterium: number;
-    mycoplasma: number;
+    aerobic_orders: number;
+    anaerobic_orders: number;
+    fungal_orders: number;
+    cl_orders: number;
+    mycobacterium_orders: number;
+    mycoplasma_orders: number;
 
 }
 
