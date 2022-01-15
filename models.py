@@ -131,7 +131,7 @@ class Inventory_Sales_Orders(db.Model):
         db.session.commit()
 class Inventory_Sales_Schema(ma.Schema):
     class Meta:
-        fields = ('order_date', 'aerobic_orders', 'anaerobic_orders', 'fungal_orders', 'cl_orders', 'mycobacterium_orders', 'mycoplasm_orders')
+        fields = ('order_date', 'aerobic_orders', 'anaerobic_orders', 'fungal_orders', 'cl_orders', 'mycobacterium_orders', 'mycoplasma_orders')
 
 sales_schema = Inventory_Sales_Schema()
 inventory_sales_schema = Inventory_Sales_Schema(many=True)
