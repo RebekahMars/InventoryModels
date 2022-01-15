@@ -8,13 +8,23 @@ const Header = styled.h1`
   align-items: center;
   text-align: center;
 `
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  padding-left: 20px;
+  align-items: center;
+`;
+
 
 const SalesPage = () => {
   
     return (
       <>
       <Header>Lab Sales</Header>
-      <LabSalesTable/>
+      <Container>
+          <LabSalesTable/>
+      </Container>
       </>
     )
   };
