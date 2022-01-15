@@ -20,14 +20,6 @@ const StyledTable = styled.table`
     border: 1px solid lightblue;
 `;
 
-/*    align-items: center;
-    borderCollapse: collapse;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    padding: 10px; */
-
 const Table = <T, K extends keyof T>({ tableColumns, tableData}: TableProps<T, K>): JSX.Element => {
     return (
         <StyledTable>

@@ -25,6 +25,7 @@
     "react-focus-lock": "^2.7.1",
     "react-hook-form": "^7.22.5",
     "react-loader-spinner": "^4.0.0",
+    "react-router-dom": "^6.2.1",
     "react-scripts": "^5.0.0",
     "styled-components": "^5.3.3"
   },

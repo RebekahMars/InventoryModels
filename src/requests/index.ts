@@ -1,5 +1,5 @@
-//const domainName = 'https://mars-inventory.herokuapp.com';
-const domainName = 'http://127.0.0.1:5000/';
+const domainName = 'https://mars-inventory.herokuapp.com';
+//const domainName = 'http://127.0.0.1:5000/';
 
 export const connectToDB = async (route: string, body?: RequestInit) => {
     try {

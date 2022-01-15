@@ -30,7 +30,9 @@ def db_drop_create_all():
     db.drop_all()
     db.create_all()
 
-
+'''
+Inventory Class & Schema Initialized 
+'''
 class Lab_Inventory(db.Model):
     __tablename__ = 'inventory'
     id = Column(Integer, primary_key=True)
@@ -83,3 +85,53 @@ class Lab_Inventory_Schema(ma.Schema):
 inventory_schema = Lab_Inventory_Schema()
 lab_inventory_schema = Lab_Inventory_Schema(many=True)
 
+'''
+Inventory Sales/Orders Class & Schema Initialized 
+'''
+class Inventory_Sales_Orders(db.Model):
+    __tablename__ = 'sales'
+    id = Column(Integer, primary_key=True)
+    order_date = Column(Date)
+    aerobic_orders = Column(Integer)
+    anaerobic_orders = Column(Integer)
+    fungal_orders = Column(Integer)
+    cl_orders = Column(Integer)
+    mycobacterium_orders = Column(Integer)
+    mycoplasma_orders = Column(Integer)
+     
+     
+    def __init__(self, order_date, aerobic_orders, anaerobic_orders, fungal_orders, cl_orders, mycobacterium_orders, mycoplasma_orders):
+        self.order_date = order_date
+        self.aerobic_orders = aerobic_orders
+        self.anaerobic_orders = anaerobic_orders
+        self.fungal_orders = fungal_orders
+        self.cl_orders = cl_orders
+        self.mycobacterium_orders = mycobacterium_orders
+        self.mycoplasma_orders = mycoplasma_orders
+    
+    def details(self):
+        return {
+            'order_date': self.order_date,
+            'aerobic_orders': self.aerobic_orders,
+            'anaerobic_orders': self.anaerobic_orders,
+            'fungal_orders': self.fungal_orders,
+            'cl_orders': self.cl_orders,
+            'mycobacterium_orders': self.mycobacterium_orders,
+            'mycoplasma_orders': self.mycoplasma_orders
+        }
+
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+    
+    def update(self):
+        db.session.commit()
+class Inventory_Sales_Schema(ma.Schema):
+    class Meta:
+        fields = ('order_date', 'aerobic_orders', 'anaerobic_orders', 'fungal_orders', 'cl_orders', 'mycobacterium_orders', 'mycoplasm_orders')
+
+sales_schema = Inventory_Sales_Schema()
+inventory_sales_schema = Inventory_Sales_Schema(many=True)

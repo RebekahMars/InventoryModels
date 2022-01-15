@@ -14,12 +14,22 @@ const Wrapper = styled.div`
 `;
 
 const GraphWrapper = styled.div`
-  width: 800px;
-  height: 800px;
+  width: 50%;
+  height: 50%;
   align-items: center;
 `;
 
-const PredictionGraph: FC<PredictionProps> = ({periods}) => {
+const PredictionWrapper = styled.div`
+  width: 50%;
+  height: 50%;
+  align-items: center;
+  text-align: center;
+  padding-top: 150px;
+  font-size: 20px;
+  font-weight: 500;
+`;
+
+const PredictionChart: FC<PredictionProps> = ({periods}) => {
   const [chartIndex, setChartIndex] = useState<number[]>([]);
   const [chartValues, setChartValues] = useState<string[]>([]);
   const [growthRate, setGrowthRate] = useState<string>();
@@ -97,10 +107,10 @@ const PredictionGraph: FC<PredictionProps> = ({periods}) => {
       <GraphWrapper>
         <Line data={chartData} options={options}/>
       </GraphWrapper>
-      <div>Over the course of {chartValues.length} days, sales are pedicted to change by {growthRate}% </div>
+      <PredictionWrapper>Over the course of {chartValues.length} days, sales are pedicted to change by {growthRate}% </PredictionWrapper>
     </Wrapper>
     </>
   )
 };
 
-export default PredictionGraph;
+export default PredictionChart;

@@ -23,3 +23,14 @@ interface MainPageProps {
 interface PredictionProps {
     periods: number;
 };
+
+interface PredictionInputs {
+    predictionPeriods: number;
+}
+
+interface PredictionFormProps {
+    titleText?: string;
+    headerText?: string;
+    submitText?: string;
+    submitPrediction: (number) => void;
+}
