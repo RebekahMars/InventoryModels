@@ -39,7 +39,7 @@ stepwise_fit.summary()
 #%%
 # ## Split Data into Training and Testing Data Sets
 print(aerobic.shape)
-train=aerobic.loc['2019-01-01':'2021-12-31']
+train=aerobic.loc['2019-01-01':'2021-12-01']
 test=aerobic.loc['2021-12-01':'2021-12-31']
 print("Training Data", train)
 print("Testing Data", test)
