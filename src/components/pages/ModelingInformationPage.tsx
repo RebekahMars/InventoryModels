@@ -58,6 +58,7 @@ const ModelingInformationPage = () => {
             <DataContainer>
                 <InfoHeader>ARIMA Model Testing Results</InfoHeader>
                     <img src={trainedModelResults} width='600px'/>
+                    <h3>Trained ARIMA model calculated Mean-Squared Error (MSE): 51.29</h3>
             </DataContainer>
         </>
     )
