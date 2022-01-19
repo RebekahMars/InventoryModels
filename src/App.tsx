@@ -5,6 +5,7 @@ import MainPage from "./components/pages/MainPage";
 import PredictionPage from './components/pages/PredictionPage';
 import InventoryPage from './components/pages/InventoryPage';
 import SalesPage from './components/pages/SalesPage';
+import ModelingInformationPage from './components/pages/ModelingInformationPage';
 
 const MainAppHeader = styled.div`
   display: flex;
@@ -24,12 +25,14 @@ const MainApp = () => {
       <Link to="/inventory">Inventory</Link>
       <Link to="/sales">Sales Data</Link>
       <Link to="/reports">Reports</Link>
+      <Link to="/model-info">Model Visuals</Link>
     </MainAppHeader>
     <Routes>
       <Route path="/" element={<MainPage/>}/>
       <Route path="/inventory" element={<InventoryPage/>}/>
       <Route path='sales' element={<SalesPage/>}/>
       <Route path='/reports' element={<PredictionPage/>}/>
+      <Route path='/model-info' element={<ModelingInformationPage/>}/>
     </Routes>
     </>
   );

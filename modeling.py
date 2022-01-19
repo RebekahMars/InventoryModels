@@ -24,6 +24,18 @@ total_orders = df.plot(title='Diagnostic Lab Orders', figsize=(15,6))
 total_orders.set(xlabel="Order Date", ylabel="Order Quantity")
 
 #%%
+# ## Determine Correlation Between Variables (If Any)
+#This will determine if variables have a relationship and display in scatterplot
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.pairplot(df, kind="scatter")
+plt.show()
+#%%
+# ## Determine Correlation Between Variables (If Any)
+#This will determine if variables have a relationship and display in table
+df.corr()
+
+#%%
 # ## Plot Specific Data
 #This will show the specific amount of aerobic cultures orderes by date
 aerobic = df['Aerobic Culture Orders']
