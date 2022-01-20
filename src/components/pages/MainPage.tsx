@@ -18,6 +18,7 @@ const MainPage = () => {
       <h3>Click on Inventory to view the lab's current inventory</h3>
       <h3>Click on Sales to view the lab's current sales history</h3>
       <h3>Click on Reports to generate forecasted sales based on the lab's current sales</h3>
+      <h3>Click on Model Visuals to view data visuals for all data utilized for this project</h3>
       <h3>Click on Home to return to this page</h3>
     </StyledMessageBox>
     </>
