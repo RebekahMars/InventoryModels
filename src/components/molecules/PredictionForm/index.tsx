@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import Button from '../../atoms/Button';
-import { amber } from '@material-ui/core/colors';
 
 const FormContainer = styled.div`
     display: flex;

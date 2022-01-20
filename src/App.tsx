@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import { Routes, Route, Link} from 'react-router-dom';
+import LoginPage from './components/pages/LoginPage';
 import MainPage from "./components/pages/MainPage";
 import PredictionPage from './components/pages/PredictionPage';
 import InventoryPage from './components/pages/InventoryPage';
@@ -21,14 +22,15 @@ const MainApp = () => {
   return (
     <>
     <MainAppHeader>
-      <Link to="/">Home</Link>
+      <Link to="/home">Home</Link>
       <Link to="/inventory">Inventory</Link>
       <Link to="/sales">Sales Data</Link>
       <Link to="/reports">Reports</Link>
       <Link to="/model-info">Model Visuals</Link>
     </MainAppHeader>
     <Routes>
-      <Route path="/" element={<MainPage/>}/>
+      <Route path="/" element={<LoginPage/>}/>
+      <Route path="/home" element={<MainPage/>}/>
       <Route path="/inventory" element={<InventoryPage/>}/>
       <Route path='sales' element={<SalesPage/>}/>
       <Route path='/reports' element={<PredictionPage/>}/>

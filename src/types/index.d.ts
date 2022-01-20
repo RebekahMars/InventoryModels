@@ -1,6 +1,12 @@
 interface ButtonProps{
     type: 'button' | 'submit' | 'cancel';
-}
+};
+
+interface LoginInputs {
+    username: string;
+    password: string;
+};
+
 interface Inventory {
     id?: number;
     name: string;
