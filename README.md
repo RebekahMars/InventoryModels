@@ -21,4 +21,8 @@ The application will be running at http://localhost:5000.
 
 * Flask server is at `app.py`
 * Postgres tables is at `models.py`
+* Machine Learning Model (ARIMA) is at `modeling.py`
 * React components in `src/`
+
+## View the Project in Real-time
+* https://mars-inventory.herokuapp.com/
