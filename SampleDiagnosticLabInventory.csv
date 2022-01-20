@@ -1,0 +1,14 @@
+Item Name,Lot Number,Quantity,Order Date,Expiration Date,Min Amount,Max Amount,Description
+CBA,354687,30,2021-11-10,2022-01-25,20,100,Columbia Blood Agar
+XLT,759253,4,2021-11-25,2022-02-25,2,10,Xylose Lysine Tergitol-4 agar
+CNA,350172,3,2021-10-13,2022-01-05,2,6,Columbia NaladixicAcid Agar
+Thioglycollate Broth,549272,3,2022-01-05,2022-03-15,1,5,Nutrient broth for growth
+MAC,674832,20,2022-01-16,2022-03-19,5,40,MacConkey Agar
+Tetrathionate Broth,647394,6,2022-01-25,2022-05-01,2,10,Selective broth for Salmonella species
+EYA,758493,1,2022-02-03,2022-04-02,1,2,Egg Yolk Agar
+Thayer Martin Agar,748395,2,2022-01-10,2022-04-01,1,3,Selective media for Brucella species
+Safranin,739472,4,2021-10-05,2022-02-20,1,5,Gram stain
+Iodine,474102,2,2021-12-15,2022-03-30,1,6,Gram stain
+CBA,749372,10,2022-01-10,2022-05-15,20,100,Columbia Blood Agar
+CNA,739254,5,2021-10-13,2022-01-03,2,6,Columbia NaladixicAcid Agar
+MAC,746002,15,2022-03-04,2022-05-06,5,40,MacConkey Agar
