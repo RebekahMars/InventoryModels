@@ -1,0 +1,19 @@
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+}
+
+.received   { background: #dbeafe; color: #1d4ed8; }
+.processing { background: #fef9c3; color: #92400e; }
+.stored     { background: #dcfce7; color: #15803d; }
+.disposed   { background: #fee2e2; color: #b91c1c; }
+.draft      { background: #f1f5f9; color: #475569; }
+.active     { background: #dbeafe; color: #1d4ed8; }
+.completed  { background: #dcfce7; color: #15803d; }
+.archived   { background: #f3f4f6; color: #374151; }
+.default    { background: #f3f4f6; color: #374151; }
