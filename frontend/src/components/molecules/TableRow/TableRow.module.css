@@ -1,0 +1,31 @@
+.tbody {
+  background-color: #fff;
+}
+
+.tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background 0.1s;
+}
+
+.tr:hover {
+  background-color: #eff6ff;
+  cursor: pointer;
+}
+
+.tr.noClick:hover {
+  cursor: default;
+  background-color: transparent;
+}
+
+.td {
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #0f172a;
+  white-space: nowrap;
+}
+
+.actionsCell {
+  padding: 6px 12px;
+  text-align: right;
+  white-space: nowrap;
+}

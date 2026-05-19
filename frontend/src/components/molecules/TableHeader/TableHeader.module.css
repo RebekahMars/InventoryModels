@@ -1,0 +1,18 @@
+.thead {
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.tr {
+  text-align: left;
+}
+
+.th {
+  width: 150px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}

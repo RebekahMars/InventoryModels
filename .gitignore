@@ -145,3 +145,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Project memory bank (local context, not source)
+memory-bank/
+
+# Claude Code settings
+.claude/
+
